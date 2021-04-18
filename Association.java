@@ -1,3 +1,12 @@
+/**
+ * @author unclepete-20
+ * Carnet 20188
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructuras de datos
+ * Seccion 10
+ * Hoja de trabajo 7
+ */
+
 // A class for binding key/value pairs.
 // (c) 1998,2001 duane a. bailey
 
