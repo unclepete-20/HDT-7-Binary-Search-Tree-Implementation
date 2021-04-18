@@ -15,69 +15,44 @@ import org.junit.Test;
 
 public class PruebasUnitariasBST {
 
-    BST<Integer> arbol = new BST<Integer>();
-    BST<Integer> asociacion = new BST<Integer>();
+    BST arbol = new BST();
+    BST asociacion = new BST();
 
 
     @Test
-    public void pruebaBSTAdd(){
+    public void pruebaBSTInsert(){
 
-        int valor = 1;
-        int valorDos = 4;
-        int valorTres = 10;
+        String[] prueba = {"Hola", "Como estas", "Yeah"};
+        Association<Integer, String[]> asso = new Association<Integer,String[]>(1, prueba);
 
-        try {
-            arbol.add(valor);
-        } catch (Exception e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-        try {
-            arbol.add(valorDos);
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        try {
-            arbol.add(valorTres);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        arbol.insert(1, asso);
 
-        assertEquals(false, arbol.isEmpty());
+        Node insertado = arbol.search(arbol.getRoot(), 1);
+
+        Node root = arbol.getRoot();
+
+        assertEquals(root, insertado);
 
     }
 
     @Test
     public void pruebaBSTSearch(){
         
-        int valor = 1;
-        int valorDos = 4;
-        int valorTres = 10;
+        String[] prueba = {"Hola", "Como estas", "Yeah"};
+        String[] prueba2 = {"Hola", "Como estas", "Yeah"};
 
-        try {
-            arbol.add(valor);
-        } catch (Exception e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-        try {
-            arbol.add(valorDos);
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        try {
-            arbol.add(valorTres);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Association<Integer, String[]> asso = new Association<Integer,String[]>(1, prueba);
+        Association<Integer, String[]> asso2 = new Association<Integer,String[]>(1, prueba2);
 
-        int busqueda = arbol.get(valorDos);
+        arbol.insert(1, asso);
+        arbol.insert(2, asso2);
 
-        assertEquals(valorDos, busqueda);
+        Node insertado = arbol.search(arbol.getRoot(), 2);
+
+        String[] resultado = insertado.getKey();
+        
+
+        assertEquals(prueba2, resultado);
     }
 }
 

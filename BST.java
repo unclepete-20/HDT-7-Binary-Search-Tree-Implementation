@@ -5,6 +5,7 @@
  * Algoritmos y estructuras de datos
  * Seccion 10
  * Hoja de trabajo 7
+ * Codigo extraido de https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
  */
 
 // Java program to demonstrate
@@ -15,22 +16,6 @@ class BST {
     /* Class containing left
        and right child of current node
      * and key value*/
-    class Node {
-        Association<Integer,String[]> associations;
-        int key;
-        Node left, right;
- 
-        public Node(int item, Association<Integer,String[]> association) {
-            key = item;
-            left = right = null;
-            associations = association;
-        }
-
-        public String[] getKey(){ //Regresa el valor del nodo.
-            return associations.getValue();
-            
-        }
-    }
  
     // Root of BST
     Node root;
@@ -46,9 +31,9 @@ class BST {
      * @param key
      */
     // This method mainly calls insertRec()
-    void insert(int key)
+    void insert(int key, Association<Integer,String[]> association)
     {
-         root = insertRec(root, key);
+         root = insertRec(root, key, association);
     }
  
     
@@ -59,22 +44,22 @@ class BST {
      */
     /* A recursive function to
        insert a new key in BST */
-    Node insertRec(Node root, int key)
+    Node insertRec(Node root, int key, Association<Integer,String[]> association)
     {
  
         /* If the tree is empty,
            return a new node */
         if (root == null)
         {
-            root = new Node(key);
+            root = new Node(key, association);
             return root;
         }
  
         /* Otherwise, recur down the tree */
         if (key < root.key)
-            root.left = insertRec(root.left, key);
+            root.left = insertRec(root.left, key, association);
         else if (key > root.key)
-            root.right = insertRec(root.right, key);
+            root.right = insertRec(root.right, key, association);
  
         /* return the (unchanged) node pointer */
         return root;
@@ -119,5 +104,9 @@ class BST {
     
         // Key is smaller than root's key
         return search(root.left, key);
+    }
+
+    public Node getRoot(){
+        return root;
     }
 }
