@@ -23,7 +23,7 @@ public class Reader {
      * Pre: Ingresa la informacion deseada al Binary Search Tree.
      * Post: La informacion ya esta almacenada en el arbol por medio de nodos.
      */
-    public static void dataToTree(int size, BST tree){ //Ingresa la informacion deseada al Binary Search Tree.
+    public static int dataToTree(int size, BST tree){ //Ingresa la informacion deseada al Binary Search Tree.
         try {
             File file = new File("diccionario.txt");
             Scanner reader = new Scanner(file);
@@ -41,6 +41,8 @@ public class Reader {
             System.out.println("Archivo no encontrado.");
             e.printStackTrace();
         }
+
+        return size;
     }
 
     

@@ -21,7 +21,7 @@ public class Main {
         int wordsize = 0;
 
         //Se leen los documentos que contienen las palabras en diferentes idiomas y la oracion a traducir.
-       Reader.dataToTree(wordsize, tree);
+       wordsize = Reader.dataToTree(wordsize, tree);
        sentence = Reader.sentenceReader(sentence);
 
         System.out.println("\n================================== PEDRO'S TRANSLATOR ==================================\n");
@@ -76,12 +76,11 @@ public class Main {
             }
 
             
-            String[] s = sentence;
             
             //Iteracion para obtener las asociaciones de las palabras en otros idiomas.
-            for(int i = 0; i < s.length; i++){
+            for(int i = 0; i < sentence.length; i++){
 
-                String word = s[i];
+                String word = sentence[i];
                 int cw = 0;
     
                 for(int j = 1; j <= wordsize; j++) {
@@ -93,7 +92,7 @@ public class Main {
     
                         String s2 = key[l];
                         if(s2.equalsIgnoreCase(word)){
-                            s[l] = key[LN];
+                            sentence[l] = key[LN];
                         }
                         else{
                             cw++;
@@ -118,16 +117,16 @@ public class Main {
                             }
                         }
 
-                        s[i] = translatedWord;  
+                        sentence[i] = translatedWord;  
                     }
                 }
             }
 
             String translatedSentence = ""; //Se juntan todas las palabras para formar la nueva oracion traducida.
 
-            for(int i = 0; i < s.length; i++){
+            for(int i = 0; i < sentence.length; i++){
 
-                translatedSentence += s[i];
+                translatedSentence += sentence[i];
                 translatedSentence += " ";
             }
 
